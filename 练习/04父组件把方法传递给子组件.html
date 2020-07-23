@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <com @func='show'></com>
+    </div>
+    <template id="tem">
+        <h1 @click='myclick'>6666</h1>
+    </template>
+   
+    <script>
+        var com={
+            template:'#tem',
+            methods: {
+                myclick(){
+                    this.$emit('func')
+                }
+            },
+        }
+      
+        var vm = new Vue({
+            el:'#app',
+            methods: {
+                show(){
+                    console.log('调用了父组件的show方法')
+                }
+            },
+            components:{
+                com
+            }
+           
+            
+            
+        })
+    </script>
+</body>
+</html>
